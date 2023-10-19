@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Poutine Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1><a href="{{ url_for('index') }}">Welcome to my poutine shop!</a></h1>
+
+        <h1>User Profile</h1>
+    </header>
+
+    <div class="profile-content">
+        <h2>Username: JohnDoe</h2>
+        <p>Email: johndoe@example.com</p>
+        <p>Joined: January 1, 2023</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Poutine Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1><a href="{{ url_for('index') }}">Welcome to my poutine shop!</a></h1>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {% if logged_in %}
+        <div class="user-profile">
+            <a href="/user">User Profile</a> &nbsp; <a href="/logout">Logout</a>
+        </div>
+        {% else %}
+        <div class="login">
+            <form action="/login" method="post">
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+        {% endif %}
+    </header>
+    <div class="horizontal-menu">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('menu') }}">Menu</a>
+    </div>
+        <!-- ... [Your header and other common elements] ... -->
+
+        <div class="container">
+            <div class="item-detail">
+                <h2>{{ item[1] }}</h2>
+                <p class="price">${{ item[2] }}</p>
+                <p class="description">{{ item[3] }}</p>
+                <p class="ingredients">Ingredients: {{ item[4] }}</p>
+            </div>
+
+            <!-- Link back to the main menu page -->
+            <a href="{{ url_for('menu') }}">Back to Menu</a>
+        </div>
+
+        <!-- ... [Your footer and other common elements] ... -->
+    
+
+
+    <!-- Optionally, add a link back to the main menu page -->
+    <!-- <div><a href="{{ url_for('index') }}">Back to Menu</a></div> -->
+
+    <!-- ... [Your footer and other common elements] ... -->
+</body>
+
+</html>
