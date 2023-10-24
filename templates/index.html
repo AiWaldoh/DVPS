@@ -24,7 +24,7 @@
 
         {% if logged_in %}
         <div class="user-profile">
-            <a href="/user">User Profile</a> &nbsp; <a href="/logout">Logout</a>
+            <a href="/user?id={{ session['user_id'] }}">User Profile</a> &nbsp; <a href="/logout">Logout</a>
         </div>
         {% else %}
         <div class="login">

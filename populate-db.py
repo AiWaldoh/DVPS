@@ -53,7 +53,8 @@ def create_and_populate_db():
         ''', [
             ('admin', 'password123'),
             ('guest', 'guestpass'),
-            ('kevin', 'sUP3R_S3KUre___P@55W0RDZ2023&&&&&&&&&&&&&&&&&&&&&&&&&')
+            ('kevin', 'sUP3R_S3KUre___P@55W0RDZ2023&&&&&&&&&&&&&&&&&&&&&&&&&'),
+            ('pmm', 'pmmpassword')
         ])
 
 

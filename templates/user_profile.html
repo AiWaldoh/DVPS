@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.first_name }} {{ user.last_name }}'s Profile - My Poutine Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function saveField(field) {
+            const contentElement = document.getElementById(field + "-content");
+            const newValue = contentElement.contentEditable === "true" ? contentElement.textContent : null;
+
+            if (!newValue) {
+                // Field is not in editable mode or no changes made
+                return;
+            }
+
+            // Send the data to the backend
+            fetch('/api/update_user_info', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    field: field,
+                    value: newValue
+                })
+            }).then(response => response.json()).then(data => {
+                // Handle server response here. For instance:
+                if (data.success) {
+                    alert("Data updated successfully!");
+                } else {
+                    alert("Failed to update. Try again.");
+                }
+                contentElement.contentEditable = "false"; // Make the field non-editable after saving
+            });
+        }
+
+        function makeEditable(elementId) {
+            let el = document.getElementById(elementId);
+            let textNode = el.childNodes[0]; // Assuming the first child is the text node.
+            let currentValue = textNode.nodeValue;
+
+            // Convert the text to an input field
+            el.innerHTML = `<input type="text" id="${elementId}-input" value="${currentValue}">`;
+
+            // Add Save and Cancel buttons
+            let saveButton = `<button onclick="saveChanges('${elementId}', '${currentValue}')">Save</button>`;
+            let cancelButton = `<button onclick="cancelChanges('${elementId}', '${currentValue}')">Cancel</button>`;
+            el.innerHTML += saveButton + cancelButton;
+        }
+
+        function saveChanges(elementId, originalValue) {
+            let inputEl = document.getElementById(elementId + '-input');
+            let newValue = inputEl.value;
+
+            let el = document.getElementById(elementId);
+            el.innerHTML = newValue + ` <button onclick="makeEditable('${elementId}')">Edit</button>`;
+        }
+
+        function cancelChanges(elementId, originalValue) {
+            let el = document.getElementById(elementId);
+            el.innerHTML = originalValue + ` <button onclick="makeEditable('${elementId}')">Edit</button>`;
+        }
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1><a href="{{ url_for('index') }}">Welcome to my poutine shop!</a></h1>
+        <h1>User Profile</h1>
+    </header>
+
+    <div class="profile-content">
+
+        <p id="first_name">First Name: {{ user.first_name }} <button onclick="makeEditable('first_name')">Edit</button>
+        </p>
+        <p id="last_name">Last Name: {{ user.last_name }} <button onclick="makeEditable('last_name')">Edit</button></p>
+        <p id="username">Username: {{ user.username }} <button onclick="makeEditable('username')">Edit</button></p>
+        <p id="home_address">Home Address: {{ user.home_address }} <button
+                onclick="makeEditable('home_address')">Edit</button></p>
+        <p id="city">City: {{ user.city }} <button onclick="makeEditable('city')">Edit</button></p>
+        <p id="province">Province: {{ user.province }} <button onclick="makeEditable('province')">Edit</button></p>
+        <p id="postal_code">Postal Code: {{ user.postal_code }} <button
+                onclick="makeEditable('postal_code')">Edit</button></p>
+        <!-- Password can be a little sensitive to display openly, consider a separate flow for changing the password -->
+        <p id="about_me">About Me: {{ user.about_me }} <button onclick="makeEditable('about_me')">Edit</button></p>
+        <p id="date_of_birth">Date of Birth: {{ user.date_of_birth }} <button
+                onclick="makeEditable('date_of_birth')">Edit</button></p>
+        <!-- Date Joined might not need to be editable as it's a system-generated timestamp -->
+        <p id="favorite_poutine">Favorite Poutine: {{ user.favorite_poutine }} <button
+                onclick="makeEditable('favorite_poutine')">Edit</button></p>
+
+
+    </div>
+</body>
+
+</html>

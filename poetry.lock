@@ -106,17 +106,6 @@ optional = false
 python-versions = ">=3.8"
 
 [[package]]
-name = "mysql"
-version = "0.0.3"
-description = "Virtual package for MySQL-python"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-mysqlclient = "*"
-
-[[package]]
 name = "mysqlclient"
 version = "2.2.0"
 description = "Python interface to MySQL"
@@ -198,7 +187,7 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "ccde6506bab57530479330f777f27d1b98ac7e3b4e3ec0bcac4569e0a66ef881"
+content-hash = "163e85e4d4a35cda76ed9a870d9125708fe89417bcd190307aceca1db34f8bf8"
 
 [metadata.files]
 atomicwrites = []
@@ -211,7 +200,6 @@ itsdangerous = []
 jinja2 = []
 markupsafe = []
 more-itertools = []
-mysql = []
 mysqlclient = []
 packaging = []
 pluggy = []
