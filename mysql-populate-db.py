@@ -1,10 +1,13 @@
 import MySQLdb
+from dotenv import load_dotenv
+import os
+load_dotenv()
+# Database configuration
 
-# Database config
-HOST = "localhost"
-USER = "kevinadmin"
-PASSWORD = "password"  # replace with your MySQL password
-DB_NAME = "poutine_shop"
+HOST = os.getenv('MYSQL_HOST')
+USER = os.getenv('MYSQL_USER')
+PASSWORD = os.getenv('MYSQL_PASSWORD')
+DB_NAME = os.getenv('MYSQL_DATABASE')
 
 # Connect to MySQL
 connection = MySQLdb.connect(host=HOST, user=USER, passwd=PASSWORD)
@@ -66,7 +69,7 @@ users_data = [
     ("Céline", "Bourque", "celine.bourque@whalewonder.net", "55 Baleine Beach", "St. Martins", "NB", "E5R 1A7", "whalewatcher", "Majesty of the deep.", "1988-12-12", "Fry Nebula Supernova", "https://via.placeholder.com/200x150.png?text=Whale+Whimsy"),
     ("Rémi", "Gautreau", "remi.gautreau@rockyridge.org", "128 Roche Ridge", "Saint-Isidore", "NB", "E8M 1E5", "rockyroadrunner", "Strength in stones.", "1983-01-20", "Fry Nebula Supernova", "https://via.placeholder.com/200x150.png?text=Rocky+Rumble"),
     ("Florence", "Gagnon", "florence.gagnon@butterflybreeze.com", "66 Papillon Path", "Saint-Léonard", "NB", "E7E 2L7", "butterflybliss", "Wings of wonder.", "1991-04-18", "Fry Nebula Supernova", "https://via.placeholder.com/200x150.png?text=Butterfly+Bounty"),
-    ("pmm", "pmm", "NONE", "NONE", "NONE", "NONE", "pmm", "pmmpassword", "NONE", "NONE", "NONE", "NONE"),
+    ("pmm", "pmm", "NONE", "NONE", "NONE", "NONE", "pmm", "pmmpassword", "NONE", "1900-00-00", "NONE", "NONE"),
 
 
 

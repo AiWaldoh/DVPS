@@ -1,15 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
-import MySQLdb  # Importing the MySQL library
+import MySQLdb 
 from MySQLdb.cursors import DictCursor
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\\\\n\\\\xec]/'
 
 # Database configuration
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'kevinadmin',
-    'passwd': 'password',
-    'db': 'poutine_shop'
+    'host': os.getenv('MYSQL_HOST'),
+    'user': os.getenv('MYSQL_USER'),
+    'passwd': os.getenv('MYSQL_PASSWORD'),
+    'db': os.getenv('MYSQL_DATABASE')
 }
 
 def get_db_connection():

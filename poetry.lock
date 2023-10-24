@@ -163,6 +163,17 @@ checkqa-mypy = ["mypy (==v0.761)"]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
 [[package]]
+name = "python-dotenv"
+version = "1.0.0"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
 name = "wcwidth"
 version = "0.2.8"
 description = "Measures the displayed width of unicode strings in a terminal"
@@ -187,7 +198,7 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "163e85e4d4a35cda76ed9a870d9125708fe89417bcd190307aceca1db34f8bf8"
+content-hash = "170490637aa1de427b0a051912708d8363f25f660ccc07148a5085432083d99e"
 
 [metadata.files]
 atomicwrites = []
@@ -205,5 +216,6 @@ packaging = []
 pluggy = []
 py = []
 pytest = []
+python-dotenv = []
 wcwidth = []
 werkzeug = []
