@@ -48,7 +48,8 @@
             <h2><a href="{{ url_for('menu_item', id=item[0]) }}">{{ item[1] }}</a></h2>
             <p class="price">${{ item[2] }}</p>
             <p class="description">{{ item[3] }}</p>
-            <p class="ingredients">Ingredients: {{ item[4] }}</p>
+
+            <p class="ingredients">Ingredients: {{ item[4]|safe }}</p>
         </div>
         {% endfor %}
     </div>
