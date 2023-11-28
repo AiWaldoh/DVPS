@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -23,7 +25,7 @@
 
         {% if logged_in %}
         <div class="user-profile">
-            <a href="/user?id={{ session['user_id'] }}">User Profile</a> &nbsp; <a href="/logout">Logout</a>
+            <a href="/user">User Profile</a> &nbsp; <a href="/logout">Logout</a>
         </div>
         {% else %}
         <div class="login">
@@ -34,26 +36,35 @@
             </form>
         </div>
         {% endif %}
-
-
     </header>
     <div class="horizontal-menu">
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('menu') }}">Menu</a>
     </div>
-    <div class="menu">
-        {% for item in items %}
-        <div class="item">
-            <!-- Make the poutine name clickable -->
-            <h2><a href="{{ url_for('menu_item', id=item[0]) }}">{{ item[1] }}</a></h2>
-            <p class="price">{{ item[2] }}</p>
-            <p class="description">{{ item[3] }}</p>
+        <!-- ... [Your header and other common elements] ... -->
 
-            <p class="ingredients">Ingredients: {{ item[4]|safe }}</p>
+        <div class="container">
+            <div class="item-detail">
+                <h2>{{ item[1] }}</h2>
+                <p class="price">{{ item[2] }}</p>
+                <img src="{{ item[3] }}" alt="Description" class="description">
+
+
+                <p class="ingredients">Ingredients: {{ item[4] }}</p>
+            </div>
+
+            <!-- Link back to the main menu page -->
+            <a href="{{ url_for('menu') }}">Back to Menu</a>
         </div>
-        {% endfor %}
-    </div>
 
+        <!-- ... [Your footer and other common elements] ... -->
+    
+
+
+    <!-- Optionally, add a link back to the main menu page -->
+    <!-- <div><a href="{{ url_for('index') }}">Back to Menu</a></div> -->
+
+    <!-- ... [Your footer and other common elements] ... -->
 </body>
 
 </html>

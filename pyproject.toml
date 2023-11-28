@@ -9,6 +9,8 @@ python = "^3.10"
 Flask = "^3.0.0"
 mysqlclient = "^2.2.0"
 python-dotenv = "^1.0.0"
+oracledb = "^1.4.2"
+psycopg2 = "^2.9.9"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

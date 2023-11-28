@@ -47,7 +47,7 @@
             <!-- Make the poutine name clickable -->
             <h2><a href="{{ url_for('menu_item', id=item[0]) }}">{{ item[1] }}</a></h2>
             <p class="price">{{ item[2] }}</p>
-            <p class="description">{{ item[3] }}</p>
+            <img src="{{ item[3] }}" alt="Description" class="description">
 
             <p class="ingredients">Ingredients: {{ item[4]|safe }}</p>
         </div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,25 +36,25 @@
         </div>
         {% endif %}
 
-
+        
     </header>
     <div class="horizontal-menu">
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('menu') }}">Menu</a>
     </div>
+    
     <div class="menu">
         {% for item in items %}
         <div class="item">
             <!-- Make the poutine name clickable -->
             <h2><a href="{{ url_for('menu_item', id=item[0]) }}">{{ item[1] }}</a></h2>
-            <p class="price">{{ item[2] }}</p>
+            <p class="price">${{ item[2] }}</p>
             <p class="description">{{ item[3] }}</p>
-
-            <p class="ingredients">Ingredients: {{ item[4]|safe }}</p>
+            <p class="ingredients">Ingredients: {{ item[4] }}</p>
         </div>
         {% endfor %}
     </div>
-
+    
 </body>
 
 </html>
